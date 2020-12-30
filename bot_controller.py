@@ -61,8 +61,7 @@ def find_object(image):
             return (True, radius)
     
     return (False,0)
-    cv2.waitKey(1)
-    # plt.show()
+
 
 # feedback loop: step simulation until receiving an exit event
 while robot.step(TIME_STEP) != -1:
