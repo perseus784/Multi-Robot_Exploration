@@ -117,9 +117,9 @@ The algorithm goes as follows:
 The parameters like Initial Weightage M and learning constant c decided based analysis discussed in the next section.
 
 ### Analysis and Parameter Tuning
-<img src="media/hyper.png" align="right" width="330" height="800"> 
+<img src="media/hyper.png" align="right" width="330" height="900"> 
 The following sections discuss various analysis done to find the optimal paramters for different bot and grid settings.  
-
+<br/><br/>   
 
 **Optimisation on number of robots**  
 
@@ -169,7 +169,7 @@ As you can see in the following gifs, the algorithm we implemented works as inte
   <br></br>
 <tab>  5 Robots <tab>
  </td>
- <td><img src="media/mr_performance.png" alt="image 1" width="750" height="850"></td>
+  <td><img src="media/mr_performance.png" alt="image 1" width="800" height="850"></td>
 
 <td>
   <img src="media/2_robot.gif" alt="image 1" width="350" height="200">
