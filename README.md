@@ -139,7 +139,24 @@ As you can see in the following gifs, the algorithm we implemented works as inte
 <table>
 
 <tr>
- <td> 2 Robots </td>
+ <td> <tab>  2 Robots <tab>
+  <br></br>
+    <br></br>
+  <br></br>
+  <br></br>
+<tab>  3 Robots <tab>
+<br></br>
+    <br></br>
+  <br></br>
+
+  <br></br>
+<tab>  4 Robots <tab>
+<br></br>
+<br></br>
+  <br></br>
+  <br></br>
+<tab>  5 Robots <tab>
+ </td>
  <td><img src="media/mr_performance.png" alt="image 1" width="650" height="850"></td>
 
 <td>
