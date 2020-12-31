@@ -23,7 +23,8 @@ The agents explore and find the described object in the environment in this sect
 ### Webots Simulator
 <img src="media/environment.png" align=right width="310" height="250">
 
-Webots simulator has been chosen after playing around with multiple simulators inclusing ROS. This provides a easy to start interface and also provides various robots to play around with in it's library. We have chosen a epuck which has a camera and ultrasonic sensors to avoid collisions. The controller code is easy to write and the same code can be given to all the bots in the environment. The figure shows us the environment that is designed for the project. The simple code for the robot controller can be found here. 
+Webots simulator has been chosen after playing around with multiple simulators inclusing ROS. This provides a easy to start interface and also provides various robots to play around with in it's library. We have chosen a epuck which has a camera and ultrasonic sensors to avoid collisions.  
+The controller code is easy to write and the same code can be given to all the bots in the environment. The figure shows us the environment that is designed for the project. The simple code for the robot controller can be found here. 
 
 ### Object Detection
 Each of the robot is equipped with a basic contour detection code. This is made very simple by just detecting the contour but we can also use advanced object detectors and make our detection far better. Green spheres are placed around the environment as shown in the image above and our robots can detect this using the following detection module.
@@ -112,7 +113,8 @@ The algorithm goes as follows:
 The parameters like Initial Weightage M and learning constant c decided based analysis discussed in the next section.
 
 ### Analysis and Parameter Tuning
-<img src="media/hyper.png" align="right" width="330" height="1000"> 
+<img src="media/hyper.png" align="right" width="330" height="800"> 
+The following sections discuss various analysis done to find the optimal paramters for different bot and grid settings.  
 
 **Optimisation on number of robots**
 As the number of robots increase, since our algorithm is not the most optimal one and it can settle for a sub-optimal solution, the algorithm cannot converge as easily as when having less number of robots. We also have to tune the Hyperparamerts such as *M* and the *learning rate* to accomodate the new number of robots that we have. The figure shows that as we increase the number of robots in the grid of same size it is really hard for our algorithm to find a global optimum. The figure shows the experiments and results performed on these metrics.
@@ -121,7 +123,9 @@ As the number of robots increase, since our algorithm is not the most optimal on
 The memory required to run the algorithm can be easily calculated by the grid size and the number of robots present in the environment. The Complexity of the algorithm is basically n_r x n where n_r is the number of robots and n is the grid size of the environment. This also means that it has a linear complexity on by the Big 0 notion and as the number of robots increase, the time taken to converge by the gradient descent algorithm also increases linearly. This has been clearly analysed and referenced in the paper.
 
 **Initial Weightage *M* and Learning Constant *c* Tuning**
-The general trend is that as we decrease the learning rate the from range [0.1, 0.01, 0.001, 0.0001] the algorithm increasingly gets slower and slower and also, high of possibility getting stuck at global minima. On the other hand the the initial weightage for each of the robot also affects the performance of the robot in a interesting way making the optimization unstable if we decrease it and does not let the grid converge if it is too high. Also, we have noticed that the increase in the increase in number of robots n_r affects the system very much and we have to find new parameters by tuning to it accordingly. The below image how the system gets affected for different M and learning constant. After a lot of observation we were able to zero down on a good aprroximation of M=500 and learning rate = 0.01 for n_r = 3 as you can see it in the result section figure the convergence is as perfect in final graph. 
+The general trend is that as we decrease the learning rate the from range [0.1, 0.01, 0.001, 0.0001] the algorithm increasingly gets slower and slower and also, high of possibility getting stuck at global minima. On the other hand the the initial weightage for each of the robot also affects the performance of the robot in a interesting way making the optimization unstable if we decrease it and does not let the grid converge if it is too high.   
+
+Also, we have noticed that the increase in the increase in number of robots n_r affects the system very much and we have to find new parameters by tuning to it accordingly. The below image how the system gets affected for different M and learning constant. After a lot of observation we were able to zero down on a good aprroximation of M=500 and learning rate = 0.01 for n_r = 3 as you can see it in the result section figure the convergence is as perfect in final graph. 
 
 ## Results
 
@@ -129,14 +133,18 @@ The general trend is that as we decrease the learning rate the from range [0.1, 
 
 As you can see in the following gifs, the algorithm we implemented works as intended and we should also note that the solutions obtained are still sub-optimal. As discussed earlier, we can see the algorithm performs better for less number of robots and convergence is affected by the grid size as well as number of robots.
 
-<img src="media/mr_performance.png" align="right" width="300" height="800">
 <table>
 <tr>
-  <img src="media/2_robot.gif" width="300" height="200">
-  <img src="media/3_robot.gif" width="300" height="200">
-  <img src="media/4_robot.gif" width="300" height="200">
-  <img src="media/5_robot.gif" width="300" height="200">
+ <td><img src="media/mr_performance.png" alt=1 width="350" height="850"></td>
+
+<td>
+  <img src="media/2_robot.gif" alt="image 1" width="350" height="200">
+  <img src="media/3_robot.gif" alt="image 2" width="350" height="200">
+  <img src="media/4_robot.gif" alt="image 3" width="350" height="200">
+  <img src="media/5_robot.gif" alt="image 4" width="350" height="200">
+ </td>
 </tr>
+
 </table> 
 
 But still the results are pretty impressive for a crude cyclic gradient descent implementation.
