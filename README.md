@@ -51,8 +51,8 @@ The idea of using CPMs is loosly based on the V2V communication in cars. CPMs ar
 
 In this project, a version of it is implemented using a Flask server and different agents share information of the things they found and the common knowledge is available to all the agents in the environment.
 
-<p align="right">
-  <img src="media/cpm.gif" width="700" height="300">
+<p align="center">
+  <img src="media/cpm.gif" width="700" height="350">
 </p>
 
 The above image shows when an object is detected by a robot, it shares the info of the object and all the robots are able to access the same. This shows we can use CPMs to share information among agents for effective communication during exploration tasks.
@@ -74,9 +74,9 @@ For this, we take the top-down or birds eye view of our created environment in w
 <tr>
 
 <td>Binary Image from webots Bird's eye view
-<img src="media/new_map.png" alt="1" width="300" height="300"></td>
+<img src="media/new_map.png" alt="1" align="center" width="300" height="300"></td>
 
-<td>Respective PyQt simulation from  binary image<img src="media/pygame.jpeg" alt="2 width="300" height="300"></td>
+<td>Respective PyQt simulation from  binary image <img src="media/pygame.jpeg" alt="2" align="center" width="300" height="300"></td>
 </tr>
 </table>
 
@@ -84,23 +84,28 @@ For this, we take the top-down or birds eye view of our created environment in w
 The DARP algorithm is responsible for optimal area division among the robots. 
 The algorithm goes as follows:
 *Intialize Weights M for each bot and intialize fair share value for the bots grid/number of bots*
-* Step 1: Intialize Evaluation matrix E_r for each robot with distance values for each grid.
-    dist = np.linalg.norm(np.array(self.init_robot_pos[bot]) - np.array((x,y)))
-    E[bot,x,y] = dist
-* Step 2: For each grid box, find the least robot with the shortest distance and assign the box to the respective robot. This matrix is called Assignment matrix A.
-    A = np.argmin(E, axis=0)
+* *Step 1:* Intialize Evaluation matrix E_r for each robot with distance values for each grid.  
 
-* Step 3: Count the number of boxes assigned for each robot and store it in a K matrix (contains number of boxes for each bot).
-    for n in range(n_bots):
-        K[n] = np.count_nonzero(A == bot_vals[n])
+      dist = np.linalg.norm(np.array(self.init_robot_pos[bot]) - np.array((x,y)))
+      E[bot,x,y] = dist
+* *Step 2:* For each grid box, find the least robot with the shortest distance and assign the box to the respective robot. This matrix is called Assignment matrix A.  
 
-* Step 4: Robot weightage M was intialized with a value and it should be updated in accordance to fair share. K-fair share gives the error and that is used to calculate the new M value with a learning constant c.
+      A = np.argmin(E, axis=0)
+
+* *Step 3:* Count the number of boxes assigned for each robot and store it in a K matrix (contains number of boxes for each bot).  
+
+      for n in range(n_bots):
+          K[n] = np.count_nonzero(A == bot_vals[n])
+
+* *Step 4:* Robot weightage M was intialized with a value and it should be updated in accordance to fair share. K-fair share gives the error and that is used to calculate the new M value with a learning constant c.  
+
         for i in range(n_bots):
             M[i] = M[i] + c*(K[i] - fair_share)
-* Steps 5: Once the weights M are calculated, it is then used to calculate the E matrix for each robot.
+* *Steps 5:* Once the weights M are calculated, it is then used to calculate the E matrix for each robot.  
+
             for i in range(n_bots):
                 E[i] = M[i] * E[i]
-* Step 6:  The setps 2- 6 are repeated until convergence.
+* *Step 6:* The *steps 2- 6* are repeated until convergence.
 
  The above process is called cyclic gradient descent. For more details, please refer to section 6 of the mentioned paper.
 
@@ -109,13 +114,13 @@ The parameters like Initial Weightage M and learning constant c decided based an
 ### Analysis and Parameter Tuning
 <img src="media/hyper.png" align="right" width="330" height="1000"> 
 
-### Optimisation on number of robots
-As the number of robots increase, since our algorithm is not the most optimal one and it can settle for a sub-optimal solution, the algorithm cannot converge as easily as when having less number of robots. We also have to tune the Hyperparamerts such as $M$ and the $learning rate$ to accomodate the new number of robots that we have. The figure shows that as we increase the number of robots in the grid of same size it is really hard for our algorithm to find a global optimum. The below figure[1] show the experiments and results we have performed for these metrics.
+**Optimisation on number of robots**
+As the number of robots increase, since our algorithm is not the most optimal one and it can settle for a sub-optimal solution, the algorithm cannot converge as easily as when having less number of robots. We also have to tune the Hyperparamerts such as *M* and the *learning rate* to accomodate the new number of robots that we have. The figure shows that as we increase the number of robots in the grid of same size it is really hard for our algorithm to find a global optimum. The figure shows the experiments and results performed on these metrics.
 
-### Computational Complexity
-The memory required to run the algorithm can be easily calculated by the grid size and the number of robots present in the environment. The Complexity of the algorithm is basically $n_{r}$x $n$ where $n_{r}$ is the number of robots and n is the grid size of the environment. This also means that it has a linear complexity on by the Big 0 notion and as the number of robots increase, the time taken to converge by the gradient descent algorithm also increases linearly. This has been clearly analysed and referenced in the paper\cite{c1}.
+**Computational Complexity**
+The memory required to run the algorithm can be easily calculated by the grid size and the number of robots present in the environment. The Complexity of the algorithm is basically n_r x n where n_r is the number of robots and n is the grid size of the environment. This also means that it has a linear complexity on by the Big 0 notion and as the number of robots increase, the time taken to converge by the gradient descent algorithm also increases linearly. This has been clearly analysed and referenced in the paper.
 
-### Initial Weightage *M* and Learning Constant *c* Tuning
+**Initial Weightage *M* and Learning Constant *c* Tuning**
 The general trend is that as we decrease the learning rate the from range [0.1, 0.01, 0.001, 0.0001] the algorithm increasingly gets slower and slower and also, high of possibility getting stuck at global minima. On the other hand the the initial weightage for each of the robot also affects the performance of the robot in a interesting way making the optimization unstable if we decrease it and does not let the grid converge if it is too high. Also, we have noticed that the increase in the increase in number of robots n_r affects the system very much and we have to find new parameters by tuning to it accordingly. The below image how the system gets affected for different M and learning constant. After a lot of observation we were able to zero down on a good aprroximation of M=500 and learning rate = 0.01 for n_r = 3 as you can see it in the result section figure the convergence is as perfect in final graph. 
 
 ## Results
