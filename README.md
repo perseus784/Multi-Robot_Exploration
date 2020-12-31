@@ -113,16 +113,19 @@ The algorithm goes as follows:
 The parameters like Initial Weightage M and learning constant c decided based analysis discussed in the next section.
 
 ### Analysis and Parameter Tuning
-<img src="media/hyper.png" align="right" width="330" height="800"> 
+<img src="media/hyper.png" align="right" width="330" height="900"> 
 The following sections discuss various analysis done to find the optimal paramters for different bot and grid settings.  
 
-**Optimisation on number of robots**
+**Optimisation on number of robots**  
+
 As the number of robots increase, since our algorithm is not the most optimal one and it can settle for a sub-optimal solution, the algorithm cannot converge as easily as when having less number of robots. We also have to tune the Hyperparamerts such as *M* and the *learning rate* to accomodate the new number of robots that we have. The figure shows that as we increase the number of robots in the grid of same size it is really hard for our algorithm to find a global optimum. The figure shows the experiments and results performed on these metrics.
 
-**Computational Complexity**
+**Computational Complexity**  
+
 The memory required to run the algorithm can be easily calculated by the grid size and the number of robots present in the environment. The Complexity of the algorithm is basically n_r x n where n_r is the number of robots and n is the grid size of the environment. This also means that it has a linear complexity on by the Big 0 notion and as the number of robots increase, the time taken to converge by the gradient descent algorithm also increases linearly. This has been clearly analysed and referenced in the paper.
 
-**Initial Weightage *M* and Learning Constant *c* Tuning**
+**Initial Weightage *M* and Learning Constant *c* Tuning**  
+
 The general trend is that as we decrease the learning rate the from range [0.1, 0.01, 0.001, 0.0001] the algorithm increasingly gets slower and slower and also, high of possibility getting stuck at global minima. On the other hand the the initial weightage for each of the robot also affects the performance of the robot in a interesting way making the optimization unstable if we decrease it and does not let the grid converge if it is too high.   
 
 Also, we have noticed that the increase in the increase in number of robots n_r affects the system very much and we have to find new parameters by tuning to it accordingly. The below image how the system gets affected for different M and learning constant. After a lot of observation we were able to zero down on a good aprroximation of M=500 and learning rate = 0.01 for n_r = 3 as you can see it in the result section figure the convergence is as perfect in final graph. 
@@ -135,7 +138,7 @@ As you can see in the following gifs, the algorithm we implemented works as inte
 
 <table>
 <tr>
- <td><img src="media/mr_performance.png" alt=1 width="350" height="850"></td>
+ <td><img src="media/mr_performance.png" width="450" height="850"></td>
 
 <td>
   <img src="media/2_robot.gif" alt="image 1" width="350" height="200">
