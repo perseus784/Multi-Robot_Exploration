@@ -1,5 +1,9 @@
 # Multi-Robot Exploration and Area Division
+  <img src="media/6_robot.gif" align="right" width="350" height="200">
+
 **Idea:** Given a area to explore and find objects, divide the work/area equallly among the agents and share the found objects using Cooperative Perceptional Messages as common knowledge for all the agents in the field.
+
+*Demo: https://youtu.be/A0Eaze0tGNw*
 
 The project can be divided into Exploration and Area Division part.
 
@@ -24,7 +28,7 @@ The agents explore and find the described object in the environment in this sect
 <img src="media/environment.png" align=right width="310" height="250">
 
 Webots simulator has been chosen after playing around with multiple simulators inclusing ROS. This provides a easy to start interface and also provides various robots to play around with in it's library. We have chosen a epuck which has a camera and ultrasonic sensors to avoid collisions.  
-The controller code is easy to write and the same code can be given to all the bots in the environment. The figure shows us the environment that is designed for the project. The simple code for the robot controller can be found here. 
+The controller code is easy to write and the same code can be given to all the bots in the environment. The figure shows us the environment that is designed for the project. The simple code for the robot controller can be found [here](https://github.com/perseus784/Multi-Robot_Exploration/blob/main/bot_controller.py) and get the world files for the webots environmet [here](https://github.com/perseus784/Multi-Robot_Exploration/tree/main/worlds). 
 
 ### Object Detection
 Each of the robot is equipped with a basic contour detection code. This is made very simple by just detecting the contour but we can also use advanced object detectors and make our detection far better. Green spheres are placed around the environment as shown in the image above and our robots can detect this using the following detection module.
@@ -59,8 +63,8 @@ In this project, a version of it is implemented using a Flask server and differe
 The above image shows when an object is detected by a robot, it shares the info of the object and all the robots are able to access the same. This shows we can use CPMs to share information among agents for effective communication during exploration tasks.
 
 ### How to Run
-* Select the respective bot from webots and use the given code as the controller code for each of the agent.
-* Run the server by using this code in a seperate terminal and please make sure the host is reachable by using the correct port number in bots as well as the server.
+* Select the respective bot from webots and use the given code as the [controller code](https://github.com/perseus784/Multi-Robot_Exploration/blob/main/bot_controller.py) for each of the agent.
+* Run the server by using [this](https://github.com/perseus784/Multi-Robot_Exploration/blob/main/cpm_server.py) code in a seperate terminal and please make sure the host is reachable by using the correct port number in bots as well as the server.
 * Once the program is started, you can see the CPMs in the server from different robots.
 
 ## Area Division
@@ -114,7 +118,8 @@ The parameters like Initial Weightage M and learning constant c decided based an
 
 ### Analysis and Parameter Tuning
 <img src="media/hyper.png" align="right" width="330" height="800"> 
-The following sections discuss various analysis done to find the optimal paramters for different bot and grid settings.    
+The following sections discuss various analysis done to find the optimal paramters for different bot and grid settings.  
+
 
 **Optimisation on number of robots**  
 
@@ -132,7 +137,7 @@ Also, we have noticed that the increase in the increase in number of robots n_r 
 
 ## Results
 
-*Run cyclic_GD_voronoi.py to run the program and modify the number of robots n_bots as required.*
+*Run [cyclic_GD_voronoi.py](https://github.com/perseus784/Multi-Robot_Exploration/blob/main/cyclic_GD_voronoi.py) to run the program and modify the number of robots n_bots as required.*
 
 As you can see in the following gifs, the algorithm we implemented works as intended and we should also note that the solutions obtained are still sub-optimal. As discussed earlier, we can see the algorithm performs better for less number of robots and convergence is affected by the grid size as well as number of robots.
 
