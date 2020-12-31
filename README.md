@@ -181,6 +181,6 @@ As you can see in the following gifs, the algorithm we implemented works as inte
 
 </table> 
 
-But still the results are pretty impressive for a crude cyclic gradient descent implementation.  
+But still the results are pretty impressive for a crude cyclic gradient descent implementation. The aim is to mainly demonstrate the effectiveness of the DARP algorithm and to use Cooperative Perceptional Messages for sharing knowledge about the environment among agents.
 
 Full Demo Here: https://youtu.be/A0Eaze0tGNw
