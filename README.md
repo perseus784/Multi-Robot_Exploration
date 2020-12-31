@@ -116,10 +116,14 @@ As the number of robots increase, since our algorithm is not the most optimal on
 The memory required to run the algorithm can be easily calculated by the grid size and the number of robots present in the environment. The Complexity of the algorithm is basically $n_{r}$x $n$ where $n_{r}$ is the number of robots and n is the grid size of the environment. This also means that it has a linear complexity on by the Big 0 notion and as the number of robots increase, the time taken to converge by the gradient descent algorithm also increases linearly. This has been clearly analysed and referenced in the paper\cite{c1}.
 
 ### Initial Weightage *M* and Learning Constant *c* Tuning
-The general trend is that as we decrease the learning rate the from range [0.1, 0.01, 0.001, 0.0001] the algorithm increasingly gets slower and slower and also, high of possibility getting stuck at global minima. On the other hand the the initial weightage for each of the robot also affects the performance of the robot in a interesting way making the optimization unstable if we decrease it and does not let the grid converge if it is too high. Also, we have noticed that the increase in the increase in number of robots n_r affects the system very much and we have to find new parameters by tuning to it accordingly. The below image how the system gets affected for different M and learning constant. After a lot of observation we were able to zero down on a good aprroximation of M=500 and learning rate = 0.01 for n_r =3 as you can see it in the result section figure the convergence is as perfect in final graph. 
+The general trend is that as we decrease the learning rate the from range [0.1, 0.01, 0.001, 0.0001] the algorithm increasingly gets slower and slower and also, high of possibility getting stuck at global minima. On the other hand the the initial weightage for each of the robot also affects the performance of the robot in a interesting way making the optimization unstable if we decrease it and does not let the grid converge if it is too high. Also, we have noticed that the increase in the increase in number of robots n_r affects the system very much and we have to find new parameters by tuning to it accordingly. The below image how the system gets affected for different M and learning constant. After a lot of observation we were able to zero down on a good aprroximation of M=500 and learning rate = 0.01 for n_r = 3 as you can see it in the result section figure the convergence is as perfect in final graph. 
 
 ## Results
-jdcmjeidmcjde
+
+*Run cyclic_GD_voronoi.py to run the program and modify the number of robots n_bots as required.*
+
+As you can see in the following gifs, the algorithm we implemented works as intended and we should also note that the solutions obtained are still sub-optimal. As discussed earlier, we can see the algorithm performs better for less number of robots and convergence is affected by the grid size as well as number of robots.
+
 <img src="media/mr_performance.png" align="right" width="300" height="800">
 <table>
 <tr>
@@ -130,5 +134,5 @@ jdcmjeidmcjde
 </tr>
 </table> 
 
-
+But still the results are pretty impressive for a crude cyclic gradient descent implementation.
 Full Demo Here: https://youtu.be/A0Eaze0tGNw

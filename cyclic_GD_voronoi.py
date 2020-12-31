@@ -11,7 +11,7 @@ import cv2
 import matplotlib.pyplot as plt
 
 nx, ny = 15, 15
-n_bots = 6
+n_bots = 3
 
 class Track_Grid:
     def __init__(self):
