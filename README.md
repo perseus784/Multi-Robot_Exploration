@@ -139,7 +139,14 @@ As you can see in the following gifs, the algorithm we implemented works as inte
 <table>
 
 <tr>
- <td> <tab>  2 Robots <tab>
+
+ <td> 
+<p>
+      <span class="nowrap">Number of robots</span>
+      <span class="nowrap"> and their respective convergence time</span>
+    </p>
+ <br></br>
+ <tab>        2 Robots <tab>
   <br></br>
     <br></br>
   <br></br>
@@ -157,7 +164,7 @@ As you can see in the following gifs, the algorithm we implemented works as inte
   <br></br>
 <tab>  5 Robots <tab>
  </td>
- <td><img src="media/mr_performance.png" alt="image 1" width="650" height="850"></td>
+ <td><img src="media/mr_performance.png" alt="image 1" width="750" height="850"></td>
 
 <td>
   <img src="media/2_robot.gif" alt="image 1" width="350" height="200">
