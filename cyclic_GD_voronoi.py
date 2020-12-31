@@ -57,7 +57,7 @@ class Track_Grid:
                         pass
                     else:
                         self.A[x,y] = val
-    def Update_M(self):    
+    def update_M(self):    
         for i in range(n_bots):
             self.M[i] = self.M[i] + self.c*(self.K[i] - self.fair_share)
 
@@ -115,7 +115,7 @@ class GuiGrid(Track_Grid):
             for n in range(n_bots):
                 self.K[n] = np.count_nonzero(self.A == self.bot_vals[n])
             
-            self.Update_M()
+            self.update_M()
 
             for i in range(n_bots):
                 self.E[i] = self.M[i] * self.E[i]
