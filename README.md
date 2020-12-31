@@ -117,7 +117,7 @@ The algorithm goes as follows:
 The parameters like Initial Weightage M and learning constant c decided based analysis discussed in the next section.
 
 ### Analysis and Parameter Tuning
-<img src="media/hyper.png" align="right" width="330" height="900"> 
+<img src="media/hyper.png" align="right" width="330" height="1000"> 
 The following sections discuss various analysis done to find the optimal paramters for different bot and grid settings.  
 <br/><br/>   
 
