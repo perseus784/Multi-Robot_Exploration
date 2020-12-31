@@ -113,8 +113,8 @@ The algorithm goes as follows:
 The parameters like Initial Weightage M and learning constant c decided based analysis discussed in the next section.
 
 ### Analysis and Parameter Tuning
-<img src="media/hyper.png" align="right" width="330" height="900"> 
-The following sections discuss various analysis done to find the optimal paramters for different bot and grid settings.  
+<img src="media/hyper.png" align="right" width="330" height="800"> 
+The following sections discuss various analysis done to find the optimal paramters for different bot and grid settings.    
 
 **Optimisation on number of robots**  
 
@@ -138,7 +138,7 @@ As you can see in the following gifs, the algorithm we implemented works as inte
 
 <table>
 <tr>
- <td><img src="media/mr_performance.png" width="450" height="850"></td>
+ <td><img src="media/mr_performance.png" alt="image 1" width="550" height="850"></td>
 
 <td>
   <img src="media/2_robot.gif" alt="image 1" width="350" height="200">
@@ -150,5 +150,6 @@ As you can see in the following gifs, the algorithm we implemented works as inte
 
 </table> 
 
-But still the results are pretty impressive for a crude cyclic gradient descent implementation.
+But still the results are pretty impressive for a crude cyclic gradient descent implementation.  
+
 Full Demo Here: https://youtu.be/A0Eaze0tGNw
