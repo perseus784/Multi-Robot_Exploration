@@ -137,15 +137,17 @@ Also, we have noticed that the increase in the increase in number of robots n_r 
 As you can see in the following gifs, the algorithm we implemented works as intended and we should also note that the solutions obtained are still sub-optimal. As discussed earlier, we can see the algorithm performs better for less number of robots and convergence is affected by the grid size as well as number of robots.
 
 <table>
+
 <tr>
- <td><img src="media/mr_performance.png" alt="image 1" width="550" height="850"></td>
+ <td> 2 Robots </td>
+ <td><img src="media/mr_performance.png" alt="image 1" width="650" height="850"></td>
 
 <td>
   <img src="media/2_robot.gif" alt="image 1" width="350" height="200">
   <img src="media/3_robot.gif" alt="image 2" width="350" height="200">
   <img src="media/4_robot.gif" alt="image 3" width="350" height="200">
   <img src="media/5_robot.gif" alt="image 4" width="350" height="200">
- </td>
+</td>
 </tr>
 
 </table> 
